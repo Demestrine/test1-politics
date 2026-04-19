@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partiso - Political Campaign</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Caveat:wght@600&display=swap" rel="stylesheet">
+    <style>
+        /* --- Global Variables & Resets --- */
+        :root {
+            --primary-red: #fc304c;
+            --primary-blue: #409bf4;
+            --dark-navy: #1b293d;
+            --text-dark: #222222;
+            --text-gray: #666666;
+            --bg-light: #f7f7f7;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, .serif-text {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .script-text {
+            font-family: 'Caveat', cursive;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Floating Right Menu --- */
+        .floating-sidebar {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .floating-sidebar a {
+            background-color: var(--primary-red);
+            color: #ffffff;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .floating-sidebar a:hover {
+            background-color: #d91c36;
+        }
+
+        /* --- Header Navigation --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            height: 90px;
+            background-color: #ffffff;
+            position: relative;
+            z-index: 10;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .brand-logo span {
+            color: var(--primary-red);
+            font-size: 32px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-gray);
+            transition: color 0.3s;
+        }
+
+        .nav-menu a.active, .nav-menu a:hover {
+            color: var(--primary-red);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 6px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border: 1px solid var(--primary-red);
+            color: var(--primary-red);
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-red);
+            color: #ffffff;
+        }
+
+        .btn-contribute {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            padding: 12px 28px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border-radius: 2px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-contribute:hover {
+            background-color: #2880d8;
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            height: 650px;
+            background: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(rgba(27, 41, 61, 0.4), rgba(27, 41, 61, 0.6));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding-top: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 72px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        .btn-hero {
+            background-color: var(--primary-red);
+            color: #ffffff;
+            padding: 18px 36px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 40px;
+            display: flex;
+            gap: 12px;
+            z-index: 1;
+        }
+
+        .slider-dots .dot {
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+        }
+
+        .slider-dots .dot.active {
+            background: #ffffff;
+        }
+
+        /* --- Newsletter Form Section --- */
+        .newsletter-section {
+            background-color: var(--dark-navy);
+            padding: 70px 20px;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .newsletter-section h2 {
+            font-size: 38px;
+            margin-bottom: 35px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .newsletter-section h2 .script-text {
+            color: var(--primary-blue);
+            font-size: 56px;
+        }
+
+        .subscribe-form {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            max-width: 750px;
+            margin: 0 auto 20px;
+        }
+
+        .subscribe-form input[type="email"] {
+            flex: 1;
+            padding: 18px 25px;
+            border: none;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+            outline: none;
+            color: var(--text-dark);
+        }
+
+        .btn-subscribe {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            padding: 18px 35px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-subscribe:hover {
+            background-color: #2880d8;
+        }
+
+        .privacy-checkbox {
+            font-size: 12px;
+            color: #8a9bb2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        /* --- Split Banner Section --- */
+        .split-banner {
+            display: flex;
+            max-width: 1100px;
+            margin: 100px auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        .banner-image {
+            flex: 1;
+            background: url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80') center/cover;
+            min-height: 450px;
+        }
+
+        .banner-text {
+            flex: 1;
+            background-color: var(--primary-red);
+            color: #ffffff;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .banner-text h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 40px;
+        }
+
+        .btn-outline {
+            align-self: flex-start;
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #c21a2d;
+            padding: 16px 32px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            background: #c21a2d;
+        }
+
+        /* --- Mission Statement --- */
+        .mission-statement {
+            text-align: center;
+            padding: 40px 20px 80px;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .mission-statement h2 {
+            font-size: 46px;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            line-height: 1.2;
+        }
+
+        .mission-statement p {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* --- Info Cards Section --- */
+        .info-cards {
+            display: flex;
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .info-card {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .info-card:nth-child(1) .card-image {
+            background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80');
+        }
+
+        .info-card:nth-child(2) .card-image {
+            background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80');
+        }
+
+        .card-body {
+            background-color: var(--bg-light);
+            padding: 50px 40px;
+            text-align: center;
+            flex: 1;
+        }
+
+        .card-body h3 {
+            font-size: 26px;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .card-body h3 .script-text {
+            color: var(--primary-red);
+            font-size: 48px;
+            font-weight: 400;
+        }
+
+        .card-body p {
+            color: var(--text-gray);
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* --- Footer Action --- */
+        .footer-action {
+            text-align: center;
+            margin-bottom: 120px;
+        }
+
+        .btn-large-blue {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            padding: 18px 45px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-large-blue:hover {
+            background-color: #2880d8;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="floating-sidebar">
+        <a href="#" title="Store">🛒</a>
+        <a href="#" title="Search">🔍</a>
+        <a href="#" title="Settings">⚙️</a>
+    </div>
+
+    <header>
+        <div class="brand-logo">
+            <span>★</span> Partiso
+        </div>
+        <ul class="nav-menu">
+            <li><a href="#" class="active">HOME</a></li>
+            <li><a href="#">FEATURES</a></li>
+            <li><a href="#">ABOUT US</a></li>
+            <li><a href="#">ACTION</a></li>
+            <li><a href="#">STORE</a></li>
+            <li><a href="#">BLOG</a></li>
+            <li><a href="#">CONTACTS</a></li>
+        </ul>
+        <div class="header-controls">
+            <div class="social-icons">
+                <a href="#">f</a>
+                <a href="#">▶</a>
+                <a href="#">X</a>
+            </div>
+            <a href="#" class="btn-contribute">CONTRIBUTE</a>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="serif-text">Principled. Proven.<br>Progressive.</h1>
+            <p>Stand with Us!</p>
+            <button class="btn-hero">JOIN OUR CAMPAIGN ☑</button>
+        </div>
+        <div class="slider-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <h2><span class="script-text">Join our team</span> <span class="serif-text">and Make Us Stronger</span></h2>
+        <div class="subscribe-form">
+            <input type="email" placeholder="Enter Your Email">
+            <button class="btn-subscribe">JOIN OUR CAMPAIGN</button>
+        </div>
+        <div class="privacy-checkbox">
+            <input type="checkbox" id="privacy-agree" checked>
+            <label for="privacy-agree">I agree that my submitted data is being collected and stored.</label>
+        </div>
+    </section>
+
+    <section class="split-banner">
+        <div class="banner-image"></div>
+        <div class="banner-text">
+            <h2 class="serif-text">Stand with Our<br>Campaign for<br>Working Families</h2>
+            <button class="btn-outline">GET INVOLVED</button>
+        </div>
+    </section>
+
+    <section class="mission-statement">
+        <h2 class="serif-text">Forward Thinking.<br>United Team.</h2>
+        <p>Our campaign is meant to bring comfortable working conditions to employees, improve social and medical care and create educational programs for youth.</p>
+    </section>
+
+    <section class="info-cards">
+        <div class="info-card">
+            <div class="card-image"></div>
+            <div class="card-body">
+                <h3 class="serif-text">Meet Our <span class="script-text">People</span></h3>
+                <p>We believe that every hardworking family deserves a good job, a quality life for their kids.</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <div class="card-image"></div>
+            <div class="card-body">
+                <h3 class="serif-text">See Our <span class="script-text">Priorities</span></h3>
+                <p>We must stand up for those left behind by automation, and a broken political system.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer-action">
+        <button class="btn-large-blue">MORE ABOUT US</button>
+    </div>
+
+</body>
+</html>

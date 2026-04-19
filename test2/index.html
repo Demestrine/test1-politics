@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>David Parker For Governor</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary-blue: #0b3178;
+        --primary-red: #d91c3d;
+        --bg-light: #f4f5f8;
+        --text-dark: #1a1a1a;
+        --border-color: #d1d5db;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .nav-links a {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+
+    /* --- Header --- */
+    header {
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        height: 80px;
+    }
+
+    .logo-container {
+        background-color: var(--primary-red);
+        color: #fff;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 40px;
+        font-weight: 900;
+        font-size: 24px;
+        line-height: 1;
+        text-align: center;
+    }
+
+    .logo-container span {
+        font-size: 10px;
+        display: block;
+        font-weight: 400;
+        letter-spacing: 2px;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1;
+        padding: 0 40px;
+    }
+
+    .nav-links {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .nav-links a.active {
+        border-bottom: 2px solid var(--primary-red);
+        padding-bottom: 5px;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 15px;
+        font-size: 14px;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+        display: flex;
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(to right, #e8edf5 0%, #d4dbec 100%);
+        min-height: 600px;
+    }
+
+    .hero-content {
+        flex: 1;
+        padding: 80px 0 0 100px;
+        z-index: 2;
+    }
+
+    .hero h1 {
+        font-size: 90px;
+        color: var(--primary-blue);
+        line-height: 0.9;
+        font-weight: 900;
+        margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+        color: var(--primary-blue);
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 40px;
+    }
+
+    .hero-subtitle::after {
+        content: '';
+        height: 2px;
+        background-color: var(--primary-blue);
+        flex: 1;
+        max-width: 150px;
+    }
+
+    .video-card {
+        background: #fff;
+        padding: 10px;
+        width: 300px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .video-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .video-text {
+        padding: 15px 10px 5px;
+    }
+
+    .video-text p {
+        font-size: 10px;
+        color: #666;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 5px;
+    }
+
+    .video-text h4 {
+        color: var(--primary-blue);
+        font-size: 18px;
+    }
+
+    .video-text h4 span {
+        color: var(--primary-red);
+    }
+
+    .hero-image {
+        flex: 1;
+        position: relative;
+    }
+
+    .hero-image img {
+        position: absolute;
+        bottom: 0;
+        right: 50px;
+        height: 110%;
+        object-fit: contain;
+    }
+
+    /* --- Contribute Section --- */
+    .contribute-bar {
+        background-color: var(--primary-blue);
+        color: #fff;
+        padding: 30px 0;
+    }
+
+    .contribute-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .contribute-text h2 {
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .contribute-text p {
+        font-size: 14px;
+        color: #a0b2d8;
+    }
+
+    .donation-amounts {
+        display: flex;
+        gap: 10px;
+    }
+
+    .donation-btn {
+        background-color: #08245b;
+        color: #fff;
+        border: none;
+        padding: 12px 25px;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .donation-btn.active {
+        background-color: var(--primary-red);
+    }
+
+    .donation-btn:hover:not(.active) {
+        background-color: #061c47;
+    }
+
+    /* --- Features Section --- */
+    .features {
+        padding: 80px 0;
+        background-color: var(--bg-light);
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+
+    .feature-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+        color: var(--primary-blue);
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .feature-list {
+        list-style: none;
+    }
+
+    .feature-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid var(--border-color);
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--primary-blue);
+        cursor: pointer;
+    }
+
+    .feature-list li:first-child {
+        border-top: 1px solid var(--border-color);
+    }
+
+    .feature-list li span {
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    /* --- Footer --- */
+    footer {
+        background-color: #f8f9fa;
+        text-align: center;
+        padding: 80px 20px;
+    }
+
+    .footer-logo {
+        width: 50px;
+        margin-bottom: 30px;
+    }
+
+    .footer-slogan {
+        font-size: 36px;
+        color: var(--primary-blue);
+        font-weight: 900;
+        font-family: 'Montserrat', sans-serif;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .footer-slogan img {
+        height: 60px; /* For the signature */
+    }
+
+    .footer-sub {
+        font-size: 12px;
+        color: #666;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+</style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div>DAVID<br>PARKER<br><span>FOR GOVERNOR</span></div>
+        </div>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTRIBUTE</a></li>
+                <li><a href="#">NEWS</a></li>
+                <li><a href="#">SHOP</a></li>
+                <li><a href="#">ELEMENTS</a></li>
+            </ul>
+            <div class="social-icons">
+                <span>&#120141;</span> <span>&#128247;</span> <span>&#9654;</span> </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>DAVID<br>PARKER</h1>
+            <div class="hero-subtitle">FOR GOVERNOR</div>
+            
+            <div class="video-card">
+                <img src="https://via.placeholder.com/300x160/2c3e50/ffffff?text=Video+Thumbnail" alt="Video Message">
+                <div class="video-text">
+                    <p>VIDEO MESSAGE</p>
+                    <h4>Vote for <span>Future</span></h4>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/600x800/transparent/333?text=Candidate+Image+PNG" alt="David Parker">
+        </div>
+    </section>
+
+    <section class="contribute-bar">
+        <div class="container contribute-inner">
+            <div class="contribute-text">
+                <h2>CONTRIBUTE</h2>
+                <p>Help us reach our goal</p>
+            </div>
+            <div class="donation-amounts">
+                <button class="donation-btn">$5</button>
+                <button class="donation-btn active">$25</button>
+                <button class="donation-btn">$50</button>
+                <button class="donation-btn">$100</button>
+                <button class="donation-btn">Other</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container features-grid">
+            
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/400x250/cc5555/ffffff?text=Economy+Image" alt="Economy">
+                <h3>Economy</h3>
+                <ul class="feature-list">
+                    <li>Employment <span>+</span></li>
+                    <li>Tax Reform <span>+</span></li>
+                    <li>3 Year Plan <span>+</span></li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/400x250/5577cc/ffffff?text=Development+Image" alt="Development">
+                <h3>Development</h3>
+                <ul class="feature-list">
+                    <li>4th Industrial Revolution <span>+</span></li>
+                    <li>New Infrastructure <span>+</span></li>
+                    <li>New Telecomunication Law <span>+</span></li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <img src="https://via.placeholder.com/400x250/55cc77/ffffff?text=Environment+Image" alt="Environment">
+                <h3>Environment</h3>
+                <ul class="feature-list">
+                    <li>Clean Power Plan <span>+</span></li>
+                    <li>EPA Sollutions <span>+</span></li>
+                    <li>New Flood Control Law <span>+</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <img src="https://via.placeholder.com/60x40/0b3178/ffffff?text=Flag" alt="Logo Flag" class="footer-logo">
+            <div class="footer-slogan">
+                Leadership. Experience. Values. 
+                <img src="https://via.placeholder.com/150x60/transparent/0b3178?text=Signature" alt="Signature">
+            </div>
+            <div class="footer-sub">
+                VOTE FOR DAVID PARKER
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

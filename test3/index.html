@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jack Well For Mayor</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --dark-blue: #091c37;
+        --gold: #d8b77d;
+        --light-bg: #f3f2ee;
+        --text-grey: #666666;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Lato', sans-serif;
+        color: #333;
+        overflow-x: hidden;
+    }
+
+    h1, h2, h3, .serif-font {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .btn {
+        display: inline-block;
+        background-color: var(--gold);
+        color: #fff;
+        padding: 12px 30px;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #c4a164;
+    }
+
+    /* --- Sidebars --- */
+    .sidebar-left {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 60px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+    }
+
+    .sidebar-left span {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        color: var(--gold);
+        font-size: 10px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin: 50vh 0;
+    }
+
+    .sidebar-right {
+        position: fixed;
+        right: 0;
+        top: 150px;
+        background-color: var(--gold);
+        display: flex;
+        flex-direction: column;
+        z-index: 100;
+    }
+
+    .sidebar-right a {
+        color: #fff;
+        padding: 15px;
+        text-decoration: none;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+        display: flex;
+        min-height: 100vh;
+        margin-left: 60px; /* Space for sidebar */
+    }
+
+    .hero-left {
+        flex: 1;
+        background-color: var(--dark-blue);
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 50px;
+        position: relative;
+    }
+
+    .hamburger {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        color: var(--gold);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .logo-header {
+        margin-bottom: 40px;
+    }
+    
+    .logo-header img {
+        width: 40px;
+        margin-bottom: 10px;
+    }
+
+    .logo-header h3 {
+        font-size: 20px;
+        letter-spacing: 1px;
+        font-weight: 400;
+    }
+
+    .logo-header span {
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--gold);
+    }
+
+    .hero-left h1 {
+        font-size: 56px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .hero-divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .hero-divider::before, .hero-divider::after {
+        content: '';
+        height: 1px;
+        width: 50px;
+        background-color: var(--gold);
+    }
+
+    .hero-divider span {
+        color: var(--gold);
+        font-size: 10px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .hero-left p {
+        font-size: 14px;
+        max-width: 400px;
+        line-height: 1.6;
+        margin-bottom: 40px;
+        color: #ccd4e0;
+    }
+
+    .hero-dots {
+        margin-top: 50px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .dot {
+        width: 6px;
+        height: 6px;
+        background-color: #fff;
+        border-radius: 50%;
+        opacity: 0.5;
+    }
+    .dot.active { opacity: 1; }
+
+    .hero-right {
+        flex: 1;
+        background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80') center/cover no-right;
+        /* Replaced with standard unsplash suit image, swap with yours */
+    }
+
+    /* --- About Section --- */
+    .about-section {
+        display: flex;
+        max-width: 1100px;
+        margin: 100px auto;
+        padding: 0 40px;
+        gap: 60px;
+        margin-left: 100px; /* Offset for sidebar */
+    }
+
+    .about-image-wrapper {
+        flex: 1;
+        position: relative;
+    }
+
+    .about-img {
+        width: 85%;
+        height: auto;
+        display: block;
+    }
+
+    .quote-box {
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        background-color: var(--dark-blue);
+        color: #fff;
+        padding: 40px;
+        width: 90%;
+    }
+
+    .quote-box p {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    .quote-box .signature {
+        font-family: 'Playfair Display', serif;
+        color: var(--gold);
+        font-size: 24px;
+        text-align: right;
+    }
+
+    .about-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .section-label {
+        font-size: 11px;
+        color: var(--text-grey);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .about-content h2 {
+        font-size: 42px;
+        color: var(--dark-blue);
+        line-height: 1.2;
+        margin-bottom: 30px;
+    }
+
+    .about-content p {
+        color: var(--text-grey);
+        font-size: 14px;
+        line-height: 1.8;
+        margin-bottom: 40px;
+    }
+
+    /* --- Featured Information Section --- */
+    .features-section {
+        background-color: var(--light-bg);
+        padding: 100px 40px 120px;
+        text-align: center;
+        margin-left: 60px;
+    }
+
+    .features-header {
+        margin-bottom: 80px;
+    }
+
+    .features-header h2 {
+        font-size: 36px;
+        color: var(--dark-blue);
+        margin: 15px 0;
+    }
+
+    .stars-divider {
+        color: var(--gold);
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .stars-divider::before, .stars-divider::after {
+        content: '';
+        height: 1px;
+        width: 40px;
+        background-color: var(--gold);
+        opacity: 0.5;
+    }
+
+    .cards-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .card {
+        background: #fff;
+        padding: 50px 30px 40px;
+        flex: 1;
+        position: relative;
+        text-align: center;
+    }
+
+    .card-icon {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        background: #fff;
+        border-radius: 50%;
+        border: 2px solid var(--light-bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gold);
+        font-size: 24px;
+    }
+
+    .card h3 {
+        font-size: 22px;
+        color: var(--dark-blue);
+        margin-bottom: 10px;
+    }
+
+    .card h4 {
+        font-size: 11px;
+        color: var(--text-grey);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        font-weight: 400;
+    }
+
+    .card p {
+        font-size: 13px;
+        color: var(--text-grey);
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+</style>
+</head>
+<body>
+
+    <div class="sidebar-left">
+        <span>CONTACTS</span>
+        <span>CONTACTS</span>
+        <span>CONTACTS</span>
+    </div>
+
+    <div class="sidebar-right">
+        <a href="#">🛒</a>
+        <a href="#">🔒</a>
+        <a href="#">📁</a>
+    </div>
+
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hamburger">&#9776;</div>
+            
+            <div class="logo-header">
+                <div style="color: var(--gold); font-size: 30px; font-family: serif;">Ⓦ</div>
+                <h3>Jack Well</h3>
+                <span>FOR MAYOR</span><br>
+                <span style="letter-spacing: 5px;">&#9733;&#9733;&#9733;</span>
+            </div>
+
+            <h1>Integrity, Liberty<br>& Prosperity</h1>
+            
+            <div class="hero-divider">
+                <span>DEDICATED CIVIL SERVANT</span>
+            </div>
+
+            <p>Discover where Jack Well stands on the issues you care about! Read his biography and political manifesto!</p>
+
+            <a href="#" class="btn">LEARN MORE</a>
+
+            <div class="hero-dots">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+        <div class="hero-right">
+            </div>
+    </section>
+
+    <section class="about-section">
+        <div class="about-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1556442656-78a06e931405?auto=format&fit=crop&w=600&q=80" alt="Jack Well" class="about-img">
+            <div class="quote-box">
+                <p>"Our mission is to provide executive leadership, as well as set priorities and goals for the City and its neighbourhoods."</p>
+                <div class="signature">Jack Well</div>
+            </div>
+        </div>
+        <div class="about-content">
+            <div class="section-label">A Brief Introduction to Us</div>
+            <h2>Welcome to a Personal<br>Political Website!</h2>
+            <p>The Mayor's role as the executive of strategic authority is to promote economic development and wealth creation, social development, and improvement of the environment. The Mayor also has various other duties in relation to culture and tourism, including responsibility for the city and its government.</p>
+            <div>
+                <a href="#" class="btn">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-header">
+            <div class="section-label">Explore Main Information</div>
+            <h2>Featured Information</h2>
+            <div class="stars-divider">&#9733; &#9733; &#9733;</div>
+        </div>
+
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <h3>Core Principles</h3>
+                <h4>Main Mission</h4>
+                <p>We are committed to restoring honesty, integrity, and accountability to government. Explore our principles.</p>
+                <a href="#" class="btn">LEARN MORE</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Political Program</h3>
+                <h4>What We Do</h4>
+                <p>Explore my main political program and learn more about our vision and how we can achieve our goals.</p>
+                <a href="#" class="btn">LEARN MORE</a>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+                <h3>Our Members</h3>
+                <h4>Our Mission</h4>
+                <p>Interested in joining us and supporting our mission? Please click below to learn more about membership.</p>
+                <a href="#" class="btn">LEARN MORE</a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

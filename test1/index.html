@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote 2027 | A New Dawn for Our People</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Montserrat:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #006837; /* Kenyan Green */
+            --accent: #F9A11B;  /* Kenyan Gold */
+            --text: #1a1a1a;
+            --white: #ffffff;
+            --gray: #f4f4f4;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .logo { font-family: 'Montserrat', sans-serif; font-size: 1.5rem; color: var(--primary); }
+        .nav-links a { text-decoration: none; color: var(--text); margin-left: 20px; font-weight: 600; }
+        .btn-donate { background: var(--accent); padding: 8px 20px; border-radius: 5px; color: var(--white) !important; }
+
+        /* Hero Section */
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,104,55,0.8), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1523821741446-edb2b68bb7a0?auto=format&fit=crop&q=80') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 5%;
+        }
+        .hero-content h1 { font-family: 'Montserrat', sans-serif; font-size: 3.5rem; margin-bottom: 1rem; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px; margin-inline: auto; }
+        .cta-group .btn { 
+            padding: 15px 35px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 50px; 
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s;
+        }
+        .btn-main { background: var(--accent); color: var(--white); }
+        .btn-outline { border: 2px solid var(--white); color: var(--white); }
+        .btn:hover { transform: translateY(-3px); }
+
+        /* Section Styling */
+        section { padding: 80px 10px; max-width: 1100px; margin: auto; }
+        h2 { font-family: 'Montserrat', sans-serif; color: var(--primary); text-align: center; margin-bottom: 40px; font-size: 2rem; }
+
+        /* Manifesto Grid */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: var(--gray); padding: 30px; border-radius: 15px; border-bottom: 5px solid var(--primary); }
+        .card h3 { color: var(--primary); margin-bottom: 15px; }
+
+        /* Donation Section */
+        .donation-box { background: var(--primary); color: white; border-radius: 20px; padding: 40px; text-align: center; }
+        .mpesa-logo { background: #69b32d; color: white; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
+
+        /* Accountability Dashboard */
+        .dashboard { display: flex; justify-content: space-around; flex-wrap: wrap; text-align: center; background: #eee; padding: 40px; border-radius: 15px; }
+        .stat { margin: 20px; }
+        .stat-number { font-size: 2.5rem; font-weight: bold; color: var(--accent); display: block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">NAME 2027</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#manifesto">Manifesto</a>
+            <a href="#engage">Get Involved</a>
+            <a href="#donate" class="btn-donate">Donate</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <h1>Uongozi wa Uwazi, Maendeleo kwa Wote</h1>
+            <p>Our journey to 2027 is about bringing power back to the people. Join us in building a transparent and prosperous [Constituency/County].</p>
+            <div class="cta-group">
+                <a href="#engage" class="btn btn-main">Join the Movement</a>
+                <a href="#manifesto" class="btn btn-outline">Read Manifesto</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>About Your Candidate</h2>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 40px;">
+            <div style="flex: 1; min-width: 300px;">
+                <p>Born and raised in [Location], [Name] is a leader who understands the challenges of our community. With a background in [Professional Background], they have consistently fought for the rights of the marginalized.</p>
+                <br>
+                <p><strong>"Leadership is not a title; it is a responsibility to serve the smallest among us."</strong></p>
+            </div>
+            <div style="flex: 1; min-width: 300px; background: #ddd; height: 350px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
+                [Candidate Photo Placeholder]
+            </div>
+        </div>
+    </section>
+
+    <section id="manifesto">
+        <h2>Key Pillars of Change</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Economy & Jobs</h3>
+                <p><strong>Problem:</strong> Lack of markets for farmers.<br><strong>Solution:</strong> Establishing regional processing hubs.<br><strong>Outcome:</strong> Increased household income by 30%.</p>
+            </div>
+            <div class="card">
+                <h3>Healthcare</h3>
+                <p><strong>Problem:</strong> High cost of medicine.<br><strong>Solution:</strong> Fully stocked Ward-level dispensaries.<br><strong>Outcome:</strong> Quality care within 5km.</p>
+            </div>
+            <div class="card">
+                <h3>Accountability</h3>
+                <p><strong>Problem:</strong> Corruption in CDF.<br><strong>Solution:</strong> A public digital tracker for all funds.<br><strong>Outcome:</strong> 100% project completion.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="accountability">
+        <h2>Accountability Dashboard</h2>
+        <div class="dashboard">
+            <div class="stat">
+                <span class="stat-number">100%</span>
+                <p>Transparency Pledge</p>
+            </div>
+            <div class="stat">
+                <span class="stat-number">12</span>
+                <p>Actionable Promises</p>
+            </div>
+            <div class="stat">
+                <span class="stat-number">24/7</span>
+                <p>Citizen Feedback</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="donate">
+        <div class="donation-box">
+            <h2>Support the Campaign</h2>
+            <p>Every shilling brings us closer to a better future.</p>
+            <div style="margin-top: 20px;">
+                <p>Send via <span class="mpesa-logo">M-PESA</span></p>
+                <p style="font-size: 1.5rem; margin-top: 10px;">Paybill: <strong>123456</strong> | Acc: <strong>VOTE</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="engage">
+        <h2>Your Voice Matters</h2>
+        <form style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 15px;">
+            <input type="text" placeholder="Full Name" style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;">
+            <input type="tel" placeholder="Phone Number (for SMS updates)" style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;">
+            <textarea placeholder="Tell us your main concern in your Ward" rows="5" style="padding: 12px; border-radius: 5px; border: 1px solid #ccc;"></textarea>
+            <button type="submit" class="btn btn-main" style="border: none; cursor: pointer;">Submit Concern</button>
+        </form>
+    </section>
+
+    <footer style="background: var(--text); color: var(--white); text-align: center; padding: 40px;">
+        <p>&copy; 2027 [Candidate Name] Campaign. Authorized by [Campaign Manager Name].</p>
+        <p>Language: English | Kiswahili</p>
+    </footer>
+
+    <script>
+        // Simple Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
