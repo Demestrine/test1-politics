@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Cunningham Campaign - Rajniti</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for colors and common values */
+        :root {
+            --primary-red: #e74c3c;
+            --dark-navy: #1a253a;
+            --bg-light: #f8f9fa;
+            --text-dark: #333;
+            --text-light: #777;
+            --footer-dark: #0d141e;
+        }
+
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, .btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-red);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-red);
+            color: #fff;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Topbar Header */
+        .topbar {
+            background-color: #fff;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        .topbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .topbar-right {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #fff;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h2 {
+            color: var(--primary-red);
+            font-size: 28px;
+        }
+
+        .logo span {
+            color: var(--dark-navy);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--dark-navy);
+            /* Replace placeholder with candidate hero background image */
+            background-image: url('data:image/svg+xml;utf8,<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="%231a253a"/><text x="50%" y="50%" text-anchor="middle" font-size="50" fill="%23fff">Hero Background (Capitol / Flags)</text></svg>');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .hero-title {
+            font-size: 60px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-subtitle {
+            font-weight: 400;
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            height: 90%;
+            width: auto;
+            /* Placeholder for candidate portrait image */
+            background-image: url('data:image/svg+xml;utf8,<svg width="600" height="800" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="%23ccc"/><text x="50%" y="50%" text-anchor="middle" font-size="30" fill="%23777">Candidate Image (Jacob)</text></svg>');
+            background-size: cover;
+            background-position: bottom right;
+            background-repeat: no-repeat;
+        }
+
+        /* Mission / Icons Section */
+        .mission {
+            text-align: center;
+            background-color: var(--bg-light);
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            margin-bottom: 50px;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .mission-item .icon {
+            font-size: 40px;
+            color: var(--primary-red);
+            margin-bottom: 20px;
+        }
+
+        .mission-item h3 {
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .mission-item p {
+            font-size: 14px;
+            color: var(--text-light);
+        }
+
+        /* Donation Banner */
+        .donate-banner {
+            background-color: var(--primary-red);
+            color: #fff;
+            text-align: center;
+        }
+
+        .donate-title {
+            font-size: 48px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .donate-text {
+            margin-bottom: 30px;
+        }
+
+        .donation-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .donation-options .btn {
+            background-color: #fff;
+            color: var(--primary-red);
+            border: 2px solid #fff;
+        }
+
+        .donation-options .btn:hover {
+            background-color: transparent;
+            color: #fff;
+        }
+
+        /* Upcoming / News Section Grid Card Styles */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-image: url('data:image/svg+xml;utf8,<svg width="400" height="200" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="%23ccc"/></svg>');
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-date {
+            font-size: 12px;
+            color: var(--primary-red);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        /* Upcoming Section */
+        .upcoming {
+            text-align: center;
+        }
+
+        /* Change Section */
+        .change {
+            background-color: var(--bg-light);
+        }
+
+        .change-content {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .change-text .highlight {
+            color: var(--primary-red);
+        }
+
+        .change-map {
+            height: 300px;
+            /* Placeholder for World Map graphic */
+            background-image: url('data:image/svg+xml;utf8,<svg width="600" height="300" viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="%23eee"/><text x="50%" y="50%" text-anchor="middle" font-size="20" fill="%23ccc">World Map Placeholder</text></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Newsletter Banner */
+        .newsletter-banner {
+            background-color: var(--dark-navy);
+            color: #fff;
+            /* Placeholder for dark newsletter background image */
+            background-image: url('data:image/svg+xml;utf8,<svg width="1920" height="600" viewBox="0 0 1920 600" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="%230d141e"/><text x="50%" y="50%" text-anchor="middle" font-size="30" fill="%23fff">Newsletter Background Image</text></svg>');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .newsletter-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 5px;
+            border: 1px solid rgba(255,255,255,0.3);
+            background-color: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+
+        /* Latest News Section */
+        .latest-news {
+            background-color: #fff;
+        }
+
+        .latest-news .section-header {
+            text-align: center;
+        }
+
+        .card-description {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--footer-dark);
+            color: var(--text-light);
+            padding: 60px 0 20px 0;
+            font-size: 14px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer-col.contact ul {
+            list-style: none;
+        }
+
+        .footer-col.contact li {
+            margin-bottom: 10px;
+        }
+
+        .footer-social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .footer-logo {
+            text-align: center;
+        }
+
+        .footer-logo h2 {
+            font-size: 24px;
+            color: var(--primary-red);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+        .insta-placeholder {
+            width: 100%;
+            height: 60px;
+            background-color: #333;
+        }
+
+        .copyright-bar {
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="topbar">
+        <div class="container">
+            <div class="topbar-left">
+                Social Icons
+            </div>
+            <div class="topbar-right">
+                <a href="#">Phone</a>
+                <a href="#">Email</a>
+                <a href="#">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo"><h2>Raj<span>niti</span></h2></a>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Services</a>
+                <a href="#">Gallery</a>
+                <a href="#">News</a>
+                <a href="#">Contact</a>
+            </div>
+            <a href="#" class="btn donate-now">Donate Now</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Jacob Cunningham</h1>
+                <p class="hero-subtitle">Bangladeshi Politician</p>
+                <a href="#" class="btn">Campaign for Justice</a>
+            </div>
+            <div class="hero-image"></div>
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="container">
+            <div class="section-header">
+                <h2>Together We Are Stronger</h2>
+                <p>Description text goes here.</p>
+            </div>
+            <div class="mission-grid">
+                <div class="mission-item">
+                    <div class="icon">C</div>
+                    <h3>Campaigns</h3>
+                    <p>Brief campaign description placeholder.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="icon">M</div>
+                    <h3>Our Mission</h3>
+                    <p>Brief mission description placeholder.</p>
+                </div>
+                <div class="mission-item">
+                    <div class="icon">E</div>
+                    <h3>Election</h3>
+                    <p>Brief election description placeholder.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="donate-banner">
+        <div class="container">
+            <h2 class="donate-title">Make A Donation</h2>
+            <p class="donate-text">Description text goes here.</p>
+            <div class="donation-options">
+                <a href="#" class="btn">$10 Donation</a>
+                <a href="#" class="btn">$25 Donation</a>
+                <a href="#" class="btn">$50 Donation</a>
+                <a href="#" class="btn">$100 Donation</a>
+            </div>
+            <a href="#" class="btn">Donate Now</a>
+        </div>
+    </section>
+
+    <section class="upcoming">
+        <div class="container">
+            <div class="section-header">
+                <h2>Upcoming Campaign</h2>
+                <p>Description text goes here.</p>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <p class="card-date">Date Placeholder</p>
+                        <h3>Campaign Title Placeholder</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <p class="card-date">Date Placeholder</p>
+                        <h3>Campaign Title Placeholder</h3>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <p class="card-date">Date Placeholder</p>
+                        <h3>Campaign Title Placeholder</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="change">
+        <div class="container change-container">
+            <div class="change-content">
+                <div class="change-text">
+                    <p>Category Placeholder</p>
+                    <h2 class="hero-title">Change We Need</h2>
+                    <p>Description text goes here.</p>
+                    <p>Jacob <span class="highlight">Cunningham</span></p>
+                </div>
+                <div class="change-map"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-banner">
+        <div class="container">
+            <h2 class="donate-title">Subscribe To Our Newsletter</h2>
+            <p class="donate-text">Description text goes here.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe Now</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="latest-news">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest News</h2>
+                <p>Description text goes here.</p>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <p class="card-date">Date Placeholder</p>
+                        <h3>News Title Placeholder</h3>
+                        <p class="card-description">Brief news summary placeholder.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <p class="card-date">Date Placeholder</p>
+                        <h3>News Title Placeholder</h3>
+                        <p class="card-description">Brief news summary placeholder.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-image"></div>
+                    <div class="card-content">
+                        <p class="card-date">Date Placeholder</p>
+                        <h3>News Title Placeholder</h3>
+                        <p class="card-description">Brief news summary placeholder.</p>
+                        <a href="#" class="btn">Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col contact">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li>Phone: (555) 123-4567</li>
+                    <li>Email: contact@jacobcampaign.com</li>
+                    <li>Address: Campaign HQ, Bangladesh</li>
+                </ul>
+                <div class="footer-social-icons">
+                    Social Icons
+                </div>
+            </div>
+            <div class="footer-col footer-logo">
+                <h2>Rajniti</h2>
+                <p>Description of campaign placeholder.</p>
+            </div>
+            <div class="footer-col instagram">
+                <h4>Instagram Photos</h4>
+                <div class="instagram-grid">
+                    <div class="insta-placeholder"></div>
+                    <div class="insta-placeholder"></div>
+                    <div class="insta-placeholder"></div>
+                    <div class="insta-placeholder"></div>
+                    <div class="insta-placeholder"></div>
+                    <div class="insta-placeholder"></div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright-bar">
+            <p>&copy; 2024 Jacob Cunningham Campaign. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
